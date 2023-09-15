@@ -1,0 +1,40 @@
+#include<stdio.h>
+//给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+//
+//有效字符串需满足：
+//
+//左括号必须用相同类型的右括号闭合。
+//左括号必须以正确的顺序闭合。
+//每个右括号都有一个对应的相同类型的左括号。
+class Solution {
+public:
+	bool isValid(string s){
+		int n = s.size();//算s的大小
+		if (n % 2 == 1)//奇数直接不存在
+			return false;
+	}
+	unodered_map<char, char>pairs = {//map是STL的一个关联容器，（具有自动排序）
+		//unordered_map: 1.unordered_map内部实现了一个哈希表（也叫散列表，通过把关键码
+		//2.值映射到Hash表中一个位置来访问记录，查找的时间复杂度可达到O(1)，其在海
+		//3.量数据处理中有着广泛应用）。因此，其元素的排列顺序是无序的。哈希表详细介绍
+		{ ')', '(' },
+		{ ']', '[' },
+		{ '}', '{' }
+	};
+	stack<char>stk;//堆栈容器一个存放char的地方
+	for(char ch : s/)//相当于for（int i=0;i<s.length();i）{s[i]}
+		//会复制一个s字符串再进行遍历操作
+	{
+		if (pairs.count(ch){
+			if (stk.empty() || stk.top() != pairs[ch])//空的或者顶的不等于前面的哈希表
+				//储存就输出错误
+			{
+				return false;
+			}
+			stk.pop();//出栈
+		}
+		else{
+			stk.push(ch);//入栈
+		}
+	}ruturn stk.empty();
+}
